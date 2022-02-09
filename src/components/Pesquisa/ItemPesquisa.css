@@ -1,0 +1,13 @@
+a {
+    display: flex;
+    gap: 5px;
+}
+
+a:link {
+    text-decoration: none;
+}
+
+img {
+    height: 50px;
+    width: 50px;
+}

@@ -1,0 +1,51 @@
+.App {
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 5fr 1fr ;
+    grid-template-rows: 1fr 5fr 2fr 1fr;
+    grid-template-areas:
+        "header header"
+        "main filter"
+        "aside aside"
+        "footer footer";
+
+}
+
+@media (max-width: 500px) {
+    .App {
+        height: 100%;
+        display: grid;
+        grid-template-columns: 1fr ;
+        grid-template-rows: auto;
+        grid-template-areas:
+            "header"
+            "filter"
+            "main" 
+            "aside"
+            "footer";
+    
+    }
+}
+
+.header {
+    grid-area: header;
+}
+
+.main {
+    grid-area: main;
+}
+
+.filter {
+    grid-area: filter;
+    border: blue solid 1px;
+}
+
+.aside {
+    grid-area: aside;
+    border: green solid 1px;
+}
+
+.footer {
+    grid-area: footer;
+    border: pink solid 1px;
+}
