@@ -1,6 +1,7 @@
 import React from 'react';
-import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
+import { BrowserRouter, Route, Switch, Redirect } from 'react-router';
 import { isAuthenticated } from './services/auth';
+import { User } from './pages/User';
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route
@@ -20,8 +21,8 @@ const Routes = () => (
     <Switch>
       <Route exact path='/' component={() => null} />
       <PrivateRoute
-        path='/*'
-        component={() => null}
+        path='/user/:id'
+        component={() => <User />}
       />
     </Switch>
   </BrowserRouter>
