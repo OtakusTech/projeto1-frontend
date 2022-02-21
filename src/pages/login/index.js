@@ -72,7 +72,7 @@ const Login = () => {
         </form>
         <p>Ainda não possui uma conta?</p>
         <span id="register" onClick={() => {
-            history('/')}}>Registrar</span>
+            history('/register')}}>Registrar</span>
         </div>
         </>
     );
