@@ -88,7 +88,7 @@ const Register = () =>{
         </form>
         <p>Já possui uma conta?</p>
         <span id="login" href="#" onClick={() => {
-            history('./login')
+            history('/login')
         }}>Entrar</span>
         </div>
         </>
