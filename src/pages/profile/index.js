@@ -3,12 +3,12 @@ import { Button, Card, Container, Row, Col } from "reactstrap";
 import { HiPencilAlt } from 'react-icons/hi';
 import api from "../../services/api/api";
 import { toast } from 'react-toastify';
-import { useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 
 const Profile = () => {
     const id = useParams();
-
-    const [user, setUser] = useState({ name: '', email: '', profilePhoto: '', bio: '' })
+    const history = useNavigate();
+    const [user, setUser] = useState({ name: '', email: '', profilePhoto: null, bio: "" })
 
     useEffect(() => {
         const fetchUser = async () => {
@@ -24,7 +24,7 @@ const Profile = () => {
             }
         };
 
-        //fetchUser();
+        fetchUser();
     }, []);
 
     return (
@@ -57,7 +57,7 @@ const Profile = () => {
                                             <img
                                                 alt="..."
                                                 className="rounded-circle"
-                                                src={user.profilePhoto && "https://www.fatosdesconhecidos.com.br/wp-content/plugins/wp-user-avatars/wp-user-avatars/assets/images/mystery.jpg"}
+                                                src={user.profilePhoto ? user.profilePhoto : "https://www.fatosdesconhecidos.com.br/wp-content/plugins/wp-user-avatars/wp-user-avatars/assets/images/mystery.jpg"}
                                             />
                                         </div>
                                     </Col>
@@ -66,26 +66,25 @@ const Profile = () => {
                                     <Button
                                         className="float-right"
                                         color="danger"
-                                        onClick={() => window.location.assign("edit")}
                                         size="sm"
+                                        onClick={() => history(`${window.location.pathname}/edit`)}
                                     >
                                         Editar <HiPencilAlt style={{"marginBottom": "3px", "marginLeft": "5px"}}/>
                                     </Button>
                                 </div>
                                 <div className="text-center mt-7">
                                     <h3>
-                                        user.name
+                                        {user.name}
                                     </h3>
                                 </div>
-                                <div>
-                                    <i className="ni education_hat mr-2" />
-                                    user.email
+                                <div className="text-center">
+                                    {user.email}
                                 </div>
                                 <div className="mt-5 py-5 border-top text-center">
                                     <Row className="justify-content-center">
                                         <Col lg="9">
                                             <p>
-                                                user.bio
+                                                {user.bio}
                                             </p>
                                         </Col>
                                     </Row>

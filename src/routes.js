@@ -14,13 +14,11 @@ import ProfileEditing from "./pages/profile/edit";
 
 const Routes = () => {
   let routes = useRoutes([
-    { path: "/", element: <></>},
+    { path: "/", element: <Home />},
     { path: "/register", element: <Register /> },
     { path: "/login", element: <Login /> },
-    { path: "/home", element: <Home /> },
-    { path: "/profile/:id", element: <Profile />},
-    { path: "/profile/:id/edit", element: <ProfileEditing />}
-    // { path: "/user/:id", element: <PrivateRoute component={<Profile />}/>}
+    { path: "/profile/:id", element: <PrivateRoute component={<Profile />}/>},
+    { path: "/profile/:id/edit", element: <PrivateRoute component={<ProfileEditing />}/>},
   ]);
   return routes;
 };

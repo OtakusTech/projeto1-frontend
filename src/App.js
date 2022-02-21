@@ -4,6 +4,7 @@ import RoutesMain from './routes';
 import './assets/vendor/nucleo/css/nucleo.css';
 import './assets/vendor/font-awesome/css/font-awesome.min.css';
 import './assets/css/argon-design-system-react.css';
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 
 function App() {
   return (
