@@ -10,9 +10,10 @@ import InputPhoto from "../../../components/InputPhoto";
 import ProfileEmpty from "../../../assets/img/profile-empty.jpg";
 
 const ProfileEditing = () => {
-    const id = useParams();
+    const params = useParams();
+    const { id } = params; 
 
-    const [loading, setloading] = useState(false);
+    const [loading, setloading] = useState(true);
     const [user, setUser] = useState({ name: '', email: '', profilePhoto: ProfileEmpty, bio: "" });
 
     useEffect(() => {
@@ -81,7 +82,9 @@ const ProfileEditing = () => {
                             <Row className="justify-content-center m-2">
                                 <Col className="order-lg-2" lg="6">
                                     <InputPhoto 
-                                        title="FOTO"
+                                        title="Tamanho ideal: 100x100px."
+                                        className="rounded-circle"
+                                        titleImage="FOTO"
                                         buttonName="SELECIONAR FOTO"
                                         value={user.profilePhoto}
                                         onClick={(file) => handleUpdatePhoto(file)}
