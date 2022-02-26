@@ -20,8 +20,8 @@ const Routes = () => {
     { path: "/login", element: <Login /> },
     { path: "/profile/:id", element: <PrivateRoute component={<Profile />}/>},
     { path: "/profile/:id/edit", element: <PrivateRoute component={<ProfileEditing />}/>},
-    { path: "/anime/new", element: <NewAnime />},
-    { path: "/anime/:id/edit", element: <NewAnime />},
+    { path: "/anime/new", element: <PrivateRoute component={<NewAnime />}/>},
+    { path: "/anime/:id/edit", element: <PrivateRoute component={<NewAnime />}/>},
   ]);
   return routes;
 };
