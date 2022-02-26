@@ -12,6 +12,7 @@ import PrivateRoute from './components/PrivateRoute';
 import Profile from './pages/profile';
 import ProfileEditing from "./pages/profile/edit";
 import NewAnime from "./pages/anime";
+import Anime from "./pages/profile-anime";
 
 const Routes = () => {
   let routes = useRoutes([
@@ -21,6 +22,7 @@ const Routes = () => {
     { path: "/profile/:id", element: <PrivateRoute component={<Profile />}/>},
     { path: "/profile/:id/edit", element: <PrivateRoute component={<ProfileEditing />}/>},
     { path: "/anime/new", element: <PrivateRoute component={<NewAnime />}/>},
+    { path: "/anime/:id", element: <Anime />},
     { path: "/anime/:id/edit", element: <PrivateRoute component={<NewAnime />}/>},
   ]);
   return routes;
