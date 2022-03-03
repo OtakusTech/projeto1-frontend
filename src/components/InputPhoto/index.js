@@ -1,18 +1,24 @@
 import { Label, Row } from "reactstrap";
 import { Image, StyledButton, StyledInput } from "./styles";
 
-const InputPhoto = ({ title, buttonName, value, onClick }) => {
+const SIZE_DEFAULT = {
+    "height": "100px",
+    "width": "100px",
+};
+
+const InputPhoto = ({ title, className, titleImage, buttonName, value, onClick, size = SIZE_DEFAULT }) => {
 
     return (
         <>
             <Label className="d-flex">
-                {title}
+                {titleImage}
             </Label>
             <Row className="justify-content-center">
                 <Image
-                    className="rounded-circle"
+                    className={className}
+                    size={size}
                     src={value}
-
+                    title={title}
                 />
             </Row>
             <Row className="justify-content-center">
