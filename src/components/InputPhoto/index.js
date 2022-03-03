@@ -6,7 +6,7 @@ const SIZE_DEFAULT = {
     "width": "100px",
 };
 
-const InputPhoto = ({ title, className, titleImage, buttonName, value, onClick, size = SIZE_DEFAULT }) => {
+const InputPhoto = ({ title, className, titleImage, buttonName, value, onClick, size = SIZE_DEFAULT, disabled = false }) => {
 
     return (
         <>
@@ -24,7 +24,7 @@ const InputPhoto = ({ title, className, titleImage, buttonName, value, onClick, 
             <Row className="justify-content-center">
                     <StyledInput
                         id="profilePhoto"
-                        className="mt-2"
+                        className={`mt-2 ${disabled ? "d-none" : ""}`}
                         type="file"
                         onChange={(event) => onClick(event)}
                     />
@@ -34,6 +34,7 @@ const InputPhoto = ({ title, className, titleImage, buttonName, value, onClick, 
                         type="button"
                         htmlFor="profilePhoto"
                         className="d-flex mt-2"
+                        disabled={disabled}
                     >
                         {buttonName}
                     </StyledButton>

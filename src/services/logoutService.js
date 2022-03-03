@@ -1,4 +1,5 @@
-import Axios from 'axios';
+import { toast } from 'react-toastify';
+import api from './api/api';
 
 const LogoutService = () => new Promise((resolve, reject) => {
 
@@ -12,14 +13,14 @@ const LogoutService = () => new Promise((resolve, reject) => {
         key: "value"
      };
 
-    Axios.post('localhost:5555/api/user/logout', bodyParameters, config).then( resp =>{
+    api.post('/user/logout', bodyParameters, config).then( resp =>{
 
         if (resp.data) {
             resolve(resp);
         }
 
     }).catch(function(err){
-        reject(err);
+        toast.error(err);
     });
 });
 

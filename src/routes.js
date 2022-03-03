@@ -4,6 +4,8 @@ import {
   useRoutes,
 } from "react-router-dom";
 
+import {Navigate} from 'react-router';
+
 import Register from './pages/register';
 import Login from './pages/login';
 import Home from './pages/home';
@@ -13,17 +15,43 @@ import Profile from './pages/profile';
 import ProfileEditing from "./pages/profile/edit";
 import NewAnime from "./pages/anime";
 import Anime from "./pages/profile-anime";
+import { isAuthenticated } from './services/auth';
+
 
 const Routes = () => {
   let routes = useRoutes([
     { path: "/", element: <Home />},
     { path: "/register", element: <Register /> },
     { path: "/login", element: <Login /> },
-    { path: "/profile/:id", element: <PrivateRoute component={<Profile />}/>},
-    { path: "/profile/:id/edit", element: <PrivateRoute component={<ProfileEditing />}/>},
-    { path: "/anime/new", element: <PrivateRoute component={<NewAnime />}/>},
+    { path: "/profile/:id", element: (
+      isAuthenticated() ? (
+        <Profile />
+      ) : (
+        <Navigate to={{ pathname: '/'}} />
+      )
+    )},
+    { path: "/profile/:id/edit", element: (
+      isAuthenticated() ? (
+        <ProfileEditing />
+      ) : (
+        <Navigate to={{ pathname: '/'}} />
+      )
+    )},
+    { path: "/anime/new", element: (
+      isAuthenticated() ? (
+        <NewAnime />
+      ) : (
+        <Navigate to={{ pathname: '/'}} />
+      )
+    )},
     { path: "/anime/:id", element: <Anime />},
-    { path: "/anime/:id/edit", element: <PrivateRoute component={<NewAnime />}/>},
+    { path: "/anime/:id/edit", element: (
+      isAuthenticated() ? (
+        <NewAnime />
+      ) : (
+        <Navigate to={{ pathname: '/'}} />
+      )
+    )},
   ]);
   return routes;
 };

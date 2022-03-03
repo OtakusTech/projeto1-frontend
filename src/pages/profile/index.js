@@ -10,13 +10,14 @@ import ProfileEmpty from "../../assets/img/profile-empty.jpg";
 const Profile = () => {
     const id = useParams();
     const history = useNavigate();
-    const [user, setUser] = useState({ name: '', email: '', profilePhoto: ProfileEmpty, bio: "" })
+    const [user, setUser] = useState({ name: '', email: '', img: ProfileEmpty, bio: "" })
 
     useEffect(() => {
         const fetchUser = async () => {
             try {
-                const response = await api.get(`user/${id}`);
-
+                const response = await api.get(`user/get/${id}`);
+                const image = response.data.img;
+                response.data.img = image ? image : ProfileEmpty;
                 setUser(response.data);
             } catch {
                 toast.error("Não foi possível localizar usuário. Tente novamente mais tarde.")
@@ -39,7 +40,7 @@ const Profile = () => {
                                 <img
                                     alt="..."
                                     className="rounded-circle"
-                                    src={user.profilePhoto}
+                                    src={user.img}
                                 />
                             </div>
                         </Col>

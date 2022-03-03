@@ -1,6 +1,6 @@
 import { Label, Input } from "reactstrap";
 
-const InputText = ({ name, value, id, type, rows }) => {
+const InputText = ({ name, value, id, type, rows, onChange }) => {
     return (
         <>
             <Label className="d-flex">
@@ -12,6 +12,7 @@ const InputText = ({ name, value, id, type, rows }) => {
                 value={value}
                 type={type}
                 rows={rows ? rows : null}
+                onChange={(e) => onChange(e.target.value)}
             />
         </>
     )

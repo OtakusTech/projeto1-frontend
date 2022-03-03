@@ -18,7 +18,11 @@ const Anime = () => {
     const [loading, setloading] = useState(false);
     const [anime, setAnime] = useState({
         title: '',
-        synopsis: "",
+        year: '',
+        synopsis: {
+            font: '',
+            text: ''
+        },
         image: AnimeEmpty,
         tags: '',
     })
@@ -27,14 +31,16 @@ const Anime = () => {
         const fetchUser = async () => {
             try {
                 const response = await api.get(`anime/${id}`);
-
+                const { title, synopsis, img, year} = response.data;
+                setAnime({
+                    title,
+                    synopsis,
+                    image: img ? img : AnimeEmpty,
+                    year
+                });
                 setloading(false);
-                setAnime(response.data);
             } catch {
                 toast.error("Não foi possível localizar o anime. Tente novamente mais tarde.")
-                setInterval(() => {
-                    window.history.back();
-                }, 2000)
             }
         };
 
@@ -75,14 +81,14 @@ const Anime = () => {
                         <Col className="order-lg-2" lg="5" />
                         <Col className="order-lg-2" lg="6">
                             <Label className=" mb-3 heading-title" style={{ "fontWeight": "bold" }}>
-                                {anime.title}
+                                {anime.title}, {anime.year}
                             </Label>
                         </Col>
                     </Row>
                     <Row className="mb-5">
                         <Col className="order-lg-2" lg="5" />
                         <Col className="order-lg-2 text-justify" lg="6">
-                            {anime.synopsis}
+                            {anime.synopsis.text}
                         </Col>
                     </Row>
                 </Card>
