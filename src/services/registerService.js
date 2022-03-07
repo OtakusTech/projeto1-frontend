@@ -1,16 +1,12 @@
-import Axios from 'axios';
+import { toast } from 'react-toastify';
+import api from './api/api';
 
-const RegisterService = props => new Promise((resolve, reject) => {
-    console.log("---- As props sendo enviadas ----");
-    console.log(props);
-    console.log("resultado ----")
-
-    
-    Axios.post('http://localhost:5555/api/user/register', props).then( resp =>{
+const RegisterService = props => new Promise((resolve, reject) => {   
+    api.post('/user/register', props).then( resp =>{
         resolve(resp);
 
     }).catch(function(err){
-        alert('Email já cadastrado ou serviço indisponível\nResposta do servidor: '+err);
+        toast.error('Email já cadastrado ou serviço indisponível\nResposta do servidor: '+err);
         reject(err);
     });
     

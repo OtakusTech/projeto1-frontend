@@ -16,9 +16,13 @@ const NewAnime = () => {
     const [loading, setloading] = useState(true);
     const [anime, setAnime] = useState({
         title: '',
-        synopsis: '',
+        synopsis: {
+            text: '',
+            font: ''
+        },
         image: AnimeEmpty,
         tags: '',
+        year: '',
     })
 
     useEffect(() => {
@@ -28,14 +32,16 @@ const NewAnime = () => {
             const fetchAnime = async () => {
                 try {
                     const response = await api.get(`anime/${id}`);
-    
-                    setAnime(response.data);
+                    const { title, synopsis, year, img } = response.data;
+                    setAnime({
+                        title,
+                        synopsis,
+                        year,
+                        image: img ? img : AnimeEmpty,
+                    });
                     setloading(false);
                 } catch {
                     toast.error("Não foi possível localizar o anime. Tente novamente mais tarde.")
-                    setInterval(() => {
-                        window.history.back();
-                    }, 2000)
                 }
             };
     
@@ -43,9 +49,41 @@ const NewAnime = () => {
         }
     }, [])
 
-    const handleSendAnime = () => {
-        // TODO: CHANGE HERE WITH THE POST/PUT ANIME FUNCTION
+    const handleSendAnime = async () => {
+        setloading(true);
+        try {
+            await api.post(`/anime/new`, {
+                title: anime.title,
+                creator: 'as',
+                year: anime.year,
+                synopsis: anime.synopsis,
+            })
+            setloading(false);
+            toast.success('Anime cadastrado com sucesso.');
+            window.location.replace(`/anime/${id}`);
+        } catch (error) {
+            setloading(false);
+            toast.error(`Não foi possível criar o anime: ${error}`)
+        }
     };
+
+    const handleUpdateAnime = async () => {
+        setloading(true);
+        try {
+            await api.put(`/anime/update/${id}`, {
+                title: anime.title,
+                creator: 'as',
+                year: anime.year,
+                synopsis: anime.synopsis,
+            })
+            setloading(false);
+            toast.success('Alterações realizadas com sucesso.');
+            window.location.replace(`/anime/${id}`);
+        } catch (error) {
+            setloading(false);
+            toast.error(`Não foi possível alterar os dados: ${error}`)
+        }
+    }
 
     const handleUpdatePhoto = (event) => {
         const reader = new FileReader();
@@ -59,6 +97,13 @@ const NewAnime = () => {
         };
     };
 
+    const updateValue = (id, newValue) => {
+        if (id === "synopsis") {
+            setAnime({ ...anime, [id]: { text: newValue} });
+        }
+        setAnime({ ...anime, [id]: newValue });
+    }
+
     return (
         <ContainerBG>
             { loading ?
@@ -69,14 +114,24 @@ const NewAnime = () => {
                         <Label className="m-3 heading-title" style={{ "fontWeight": "bold" }}>
                             {`${!id ? "CRIAR" : "EDITAR"} ANIME`}
                         </Label>
-                        <Form onSubmit={handleSendAnime}>
+                        <Form onSubmit={id ? handleUpdateAnime : handleSendAnime}>
                             <Row className="justify-content-center m-2">
-                                <Col className="order-lg-2">
+                                <Col className="order-lg-2" lg="8">
                                     <InputText 
                                         name="TÍTULO DO ANIME"
                                         id="title"
                                         value={anime.title}
                                         type="title"
+                                        onChange={(value) => updateValue("title", value)}
+                                    />
+                                </Col>
+                                <Col className="order-lg-2" lg="4">
+                                    <InputText 
+                                        name="ANO DE LANÇAMENTO"
+                                        id="year"
+                                        value={anime.year}
+                                        type="mumber"
+                                        onChange={(value) => updateValue("year", value)}
                                     />
                                 </Col>
                             </Row>
@@ -85,9 +140,10 @@ const NewAnime = () => {
                                     <InputText
                                         name="SINOPSE"
                                         id="synopsis"
-                                        value={anime.synopsis}
+                                        value={anime.synopsis.text}
                                         type="textarea"
                                         rows="15"
+                                        onChange={(value) => updateValue("synopsis", value)}
                                     />
                                 </Col>
                                 <Col className="order-lg-2" lg="4">
@@ -98,6 +154,7 @@ const NewAnime = () => {
                                         buttonName="SELECIONAR FOTO"
                                         value={anime.image}
                                         onClick={(file) => handleUpdatePhoto(file)}
+                                        disabled={true}
                                     />
                                 </Col>
                             </Row>

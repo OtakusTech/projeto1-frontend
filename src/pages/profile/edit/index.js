@@ -19,15 +19,13 @@ const ProfileEditing = () => {
     useEffect(() => {
         const fetchUser = async () => {
             try {
-                const response = await api.get(`user/${id}`);
+                const response = await api.get(`user/get/${id}`);
 
                 setUser(response.data);
                 setloading(false);
-            } catch {
-                toast.error("Não foi possível localizar usuário. Tente novamente mais tarde.")
-                setInterval(() => {
-                    window.history.back();
-                }, 2000)
+            } catch (error) {
+                setloading(false);
+                toast.error(`Não foi possível alterar os dados: ${error}`)
             }
         };
 
@@ -37,7 +35,6 @@ const ProfileEditing = () => {
     const handleUpdatePhoto = (event) => {
         const reader = new FileReader();
         const file = event.target.files[0];
-
         reader.readAsDataURL(file);
         reader.onloadend = () => {
             let imgBase64 = reader.result;
@@ -46,8 +43,26 @@ const ProfileEditing = () => {
         };
     };
 
-    const handleUpdateUser = () => {
-        // TODO: CHANGE HERE WITH THE UPDATE USER FUNCTION
+    const handleUpdateUser = async () => {
+        setloading(true);
+        try {
+            await api.put(`/user/update/${id}`, {
+                name: user.name,
+                email: user.email,
+                // img: user.profilePhoto,
+                bio: user.bio
+            })
+            setloading(false);
+            toast.success('Alterações realizadas com sucesso.');
+            window.location.replace(`/profile/${id}`);
+        } catch (error) {
+            setloading(false);
+            toast.success(`Não foi possível realizar as alterações: ${error}`);
+        }
+    }
+
+    const updateValue = (id, newValue) => {
+        setUser({ ...user, [id]: newValue });
     }
 
     return (
@@ -68,6 +83,7 @@ const ProfileEditing = () => {
                                         id="name"
                                         value={user.name}
                                         type="name"
+                                        onChange={(value) => updateValue("name", value)}
                                     />
                                 </Col>
                                 <Col className="order-lg-2" lg="6">
@@ -76,6 +92,7 @@ const ProfileEditing = () => {
                                         id="email"
                                         value={user.email}
                                         type="email"
+                                        onChange={(value) => updateValue("email", value)}
                                     />
                                 </Col>
                             </Row>
@@ -88,6 +105,7 @@ const ProfileEditing = () => {
                                         buttonName="SELECIONAR FOTO"
                                         value={user.profilePhoto}
                                         onClick={(file) => handleUpdatePhoto(file)}
+                                        disabled={true}
                                     />
                                 </Col>
                                 <Col className="order-lg-2" lg="6">
@@ -97,6 +115,7 @@ const ProfileEditing = () => {
                                         value={user.bio}
                                         type="textarea"
                                         rows="5"
+                                        onChange={(value) => updateValue("bio", value)}
                                     />
                                 </Col>
                             </Row>
