@@ -2,7 +2,7 @@ import axios from 'axios';
 import { getToken } from '../auth';
 
 const api = axios.create({
-  baseURL: 'http://otakustech-api.herokuapp.com', // change here, in the future
+  baseURL: 'https://otakustech-api.herokuapp.com', // change here, in the future
 });
 
 
