@@ -24,7 +24,14 @@ import {
   Input
 } from "reactstrap";
 
+import Pesquisa from '../../../src/components/Pesquisa';
+import axios from 'axios';
+
 class MainNavbar extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
   componentDidMount() {
     let headroom = new Headroom(document.getElementById("navbar-main"));
     // initialise
@@ -48,6 +55,7 @@ class MainNavbar extends React.Component {
   };
 
   render() {
+
     return (
       <>
         <header className="header-global">
@@ -80,14 +88,15 @@ class MainNavbar extends React.Component {
                 </Nav>
                   <Nav className="align-items-lg-center ml-lg-auto" navbar>
                     <NavItem>
+                      <Pesquisa className="pesquisa"/>
                       <Input placeholder="Pesquisar Anime" type="text" />
                     </NavItem>
                   <NavItem className="d-none d-lg-block ml-lg-4">
                     <Button
                       className="btn-neutral btn-icon"
                       color="default"
-                      href="#"
-                      target="_blank"
+                      href="/login"
+                      target="_self"
                     >
                       <span className="btn-inner--icon">
                         <i className="fa fa-user mr-2" />
