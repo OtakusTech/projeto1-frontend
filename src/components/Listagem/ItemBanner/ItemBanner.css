@@ -1,0 +1,36 @@
+.item-banner {
+    display: flex;
+    gap: 5px;
+    border-radius: 5px;
+    border: #5b7a99 solid 1px;
+    box-shadow: 0 0 10px gray;
+    margin: 0.5rem;
+    width: 350px;
+    background-color: white;
+    color: #010101;
+    padding: 0.5rem;
+}
+
+
+.item-banner:link {
+    text-decoration: none;
+}
+
+.item-banner img {
+    height: 100px;
+    width: 100px;
+}
+
+.item-banner:hover {
+    transform: scale(1.1); 
+}
+
+.item-banner h3 {
+    color: #5b7a99;
+    margin-bottom: 5px;
+}
+
+.autor {
+    font-size: 10pt;
+    margin-top: 5px;
+}
