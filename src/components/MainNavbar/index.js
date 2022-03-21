@@ -89,7 +89,6 @@ class MainNavbar extends React.Component {
                   <Nav className="align-items-lg-center ml-lg-auto" navbar>
                     <NavItem>
                       <Pesquisa className="pesquisa"/>
-                      <Input placeholder="Pesquisar Anime" type="text" />
                     </NavItem>
                   <NavItem className="d-none d-lg-block ml-lg-4">
                     <Button

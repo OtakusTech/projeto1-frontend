@@ -61,8 +61,8 @@ import {
                           Descubra novos Animes
                         </h1>
                         <p className="lead text-white">
-                        comunidade colaborativa e apaixonada que ajudar catalogar 
-                        animes e um sistema incrível que te ajudar a encontra seu 
+                        Comunidade colaborativa e apaixonada que ajuda a catalogar 
+                        animes e um sistema incrível que te ajuda a encontrar seu 
                         próximo anime preferido da temporada.
                         </p>
                       </Col>
@@ -106,13 +106,13 @@ import {
                           </h6>
                           <div>
                             <Badge color="primary" pill className="mr-1">
-                              teste1
+                              Ação
                             </Badge>
                             <Badge color="primary" pill className="mr-1">
-                              teste2
+                              Fantasia
                             </Badge>
                             <Badge color="primary" pill className="mr-1">
-                              teste 3
+                              Romance
                             </Badge>
                           </div>
                           <Button

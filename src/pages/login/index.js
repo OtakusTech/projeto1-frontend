@@ -50,7 +50,7 @@ const Login = () => {
         }
         
         if (result){
-            history('/home');
+            history('/');
         }
         setLoading(false);
 

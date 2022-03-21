@@ -66,7 +66,7 @@ const Register = () =>{
             });
 
             if (loginResult.data){
-                history('/home');
+                history('/');
             }
         }
 
