@@ -1,37 +1,23 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { toast } from "react-toastify";
 import { Col, Container, Row } from "reactstrap";
 import api from "../../services/api/api";
 import CardAnime from "../CardAnime";
 
-const ANIMES_MOCK = [
-    {
-        id:"1",
-        img:"https://upload.wikimedia.org/wikipedia/pt/f/ff/One_Piece_vol._01.jpg",
-        title:"One Piece",
-        tags:["Aventura","luta","misterio "]
-    },
-    {
-        id:"2",
-        img:"https://upload.wikimedia.org/wikipedia/pt/f/ff/One_Piece_vol._01.jpg",
-        title:"One Piece",
-        tags:["Aventura","luta","misterio "]
-    },
-    {
-        id:"3",
-        img:"https://upload.wikimedia.org/wikipedia/pt/f/ff/One_Piece_vol._01.jpg",
-        title:"One Piece",
-        tags:["Aventura","luta","misterio "]
-    },
-    {
-        id:"4",
-        img:"https://upload.wikimedia.org/wikipedia/pt/f/ff/One_Piece_vol._01.jpg",
-        title:"One Piece",
-        tags:["Aventura","luta","misterio "]
-    },
-];
-
 const ListAnimes = ({ title }) => {
-    const [animes, setanimes] = useState(ANIMES_MOCK);
+    const [animes, setAnimes] = useState([]);
+
+    useEffect(() => {
+        const getAll = async () => {
+            try {
+                const { data } = await api.get('/anime/all')
+                setAnimes(data.slice(0,4));
+            } catch (error) {
+                toast.error("Erro inesperado. Atualize a página e tente novamente");
+            }
+        }
+        getAll();
+    }, [])
 
     return (
         <Container className='mt-6 p-0'>
@@ -43,8 +29,8 @@ const ListAnimes = ({ title }) => {
                             animes.map(anime => {
                                 return (
                                     <CardAnime
-                                        key={anime.id}
-                                        id={anime.id}
+                                        key={anime._id}
+                                        id={anime._id}
                                         img={anime.img}
                                         title={anime.title}
                                         tags={anime.tags}

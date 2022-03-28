@@ -12,6 +12,7 @@ import {
 	Container,
 	Input
 } from "reactstrap";
+import Pesquisa from '../Pesquisa';
 
 const MainNavbar = () => {
 
@@ -66,7 +67,7 @@ const MainNavbar = () => {
 					</Nav>
 					<Nav className="align-items-lg-center ml-lg-auto" navbar>
 						<NavItem>
-							<Input placeholder="Pesquisar Anime" type="text" />
+							<Pesquisa className="pesquisa"/>
 						</NavItem>
 						<NavItem className="d-none d-lg-block ml-lg-4">
 							<Button
