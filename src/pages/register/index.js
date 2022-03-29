@@ -61,8 +61,8 @@ const Register = () =>{
         if (result.data){
             let loginResult;
             loginResult = await LoginService({
-                "email":email.toLowerCase(),
-                "password":password
+                "email": email.toLowerCase(),
+                "password": password
             });
 
             if (loginResult.data){

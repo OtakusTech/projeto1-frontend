@@ -16,6 +16,7 @@ import ProfileEditing from "./pages/profile/edit";
 import NewAnime from "./pages/anime";
 import Anime from "./pages/profile-anime";
 import { isAuthenticated } from './services/auth';
+import { ToastContainer } from "react-toastify";
 
 
 const Routes = () => {

@@ -1,5 +1,5 @@
 import { useNavigate, useParams } from "react-router"
-import { Button, Card, Col, Label, Row } from "reactstrap";
+import { Badge, Button, Card, Col, Label, Row } from "reactstrap";
 import ContainerBG from "../../components/ContainerBG";
 import AnimeEmpty from "../../assets/img/anime-empty.jpg";
 import { React, useEffect, useState } from "react";
@@ -24,19 +24,20 @@ const Anime = () => {
             text: ''
         },
         image: AnimeEmpty,
-        tags: '',
-    })
+        tags: [],
+    });
 
     useEffect(() => {
-        const fetchUser = async () => {
+        const fetchAnime = async () => {
             try {
                 const response = await api.get(`anime/${id}`);
-                const { title, synopsis, img, year} = response.data;
+                const { title, synopsis, img, year, tags } = response.data;
                 setAnime({
                     title,
                     synopsis,
                     image: img ? img : AnimeEmpty,
-                    year
+                    year,
+                    tags,
                 });
                 setloading(false);
             } catch {
@@ -44,7 +45,7 @@ const Anime = () => {
             }
         };
 
-        fetchUser();
+        fetchAnime();
     }, [])
 
     return (
@@ -89,6 +90,20 @@ const Anime = () => {
                         <Col className="order-lg-2" lg="5" />
                         <Col className="order-lg-2 text-justify" lg="6">
                             {anime.synopsis.text}
+                        </Col>
+                    </Row>
+                    <Row className="mb-5">
+                        <Col className="order-lg-2" lg="5" />
+                        <Col className="order-lg-2 text-justify" lg="6">
+                            {
+                                anime.tags.map(tag => {
+                                    return (
+                                    <Badge key={tag.tagId} color="light" pill className="mr-2 pr-3 pl-3">
+                                        {tag.name}
+                                    </Badge>
+                                    )
+                                })
+                            }
                         </Col>
                     </Row>
                 </Card>
