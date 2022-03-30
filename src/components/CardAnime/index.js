@@ -19,8 +19,8 @@ const CardAnime = ({ id, img, title, tags}) => {
                         {
                             tags.map(tag => {
                                 return (
-                                <Badge key={tag} color="light" pill className="mr-1">
-                                    {tag}
+                                <Badge key={tag.tagId} color="light" pill className="mr-1">
+                                    {tag.name}
                                 </Badge>
                                 )
                             })
