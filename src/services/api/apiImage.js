@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const apiImage = axios.create({
-    baseURL: 'https://api.imgur.com/3/', 
+    baseURL: 'https://api.imgur.com/3', 
 });
 const clientId = '2ec35053f9b270a';
 
