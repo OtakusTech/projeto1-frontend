@@ -8,7 +8,7 @@ import ContainerBG from "../../components/ContainerBG";
 import ProfileEmpty from "../../assets/img/profile-empty.jpg";
 
 const Profile = () => {
-    const id = useParams();
+    const id = useParams().id;
     const history = useNavigate();
     const [user, setUser] = useState({ name: '', email: '', img: ProfileEmpty, bio: "" })
 
