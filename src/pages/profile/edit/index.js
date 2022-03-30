@@ -8,6 +8,7 @@ import Loading from "../../../components/Loading";
 import InputText from "../../../components/InputText";
 import InputPhoto from "../../../components/InputPhoto";
 import ProfileEmpty from "../../../assets/img/profile-empty.jpg";
+import apiImage from "../../../services/api/apiImage";
 
 const ProfileEditing = () => {
     const params = useParams();
@@ -32,15 +33,18 @@ const ProfileEditing = () => {
         fetchUser();
     }, []);
 
-    const handleUpdatePhoto = (event) => {
-        const reader = new FileReader();
+    const handleUpdatePhoto = async (event) => {
         const file = event.target.files[0];
-        reader.readAsDataURL(file);
-        reader.onloadend = () => {
-            let imgBase64 = reader.result;
-            const imgURL = imgBase64.replace(/^data:image\/[a-z]+;base64,/, "");
-            setUser({ ...user, profilePhoto: `data:image/png;base64,${imgURL}`});
-        };
+
+        const data = new FormData();
+        data.append('image', file);
+
+        try {
+            const result = await apiImage.post('/image', data);
+            setUser({ ...user, profilePhoto: result.data.link });
+        } catch (error) {
+            toast.error("Algum erro ocorreu ao tentar salvar a imagem. Tente novamente.")
+        }
     };
 
     const handleUpdateUser = async () => {
@@ -49,7 +53,7 @@ const ProfileEditing = () => {
             await api.put(`/user/update/${id}`, {
                 name: user.name,
                 email: user.email,
-                // img: user.profilePhoto,
+                img: user.profilePhoto,
                 bio: user.bio
             })
             setloading(false);

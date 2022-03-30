@@ -66,7 +66,7 @@ const NewAnime = () => {
                 creator: localStorage.getItem('user-id'),
                 year: anime.year,
                 synopsis: anime.synopsis,
-                // img: anime.image,
+                img: anime.image,
                 tags: anime.tags,
             })
             setloading(false);
@@ -105,10 +105,10 @@ const NewAnime = () => {
         data.append('image', file);
 
         try {
-            const result = await apiImage.post('https://api.imgur.com/3/', data);
+            const result = await apiImage.post('/image', data);
             setAnime({ ...anime, image: result.data.link });
         } catch (error) {
-            console.log(error);
+            toast.error("Algum erro ocorreu ao tentar salvar a imagem. Tente novamente.")
         }
     };
 
