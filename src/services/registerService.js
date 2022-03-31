@@ -6,7 +6,7 @@ const RegisterService = props => new Promise((resolve, reject) => {
         resolve(resp);
 
     }).catch(function(err){
-        toast.error('Email já cadastrado ou serviço indisponível\nResposta do servidor: '+err);
+        toast.error('Email já cadastrado ou serviço indisponível\nResposta do servidor: '+err.response.data);
         reject(err);
     });
     

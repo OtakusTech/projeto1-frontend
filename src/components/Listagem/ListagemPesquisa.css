@@ -1,4 +1,9 @@
 
 .listagem-pesquisa {
-    background-color: white;
+    /* background-color: white; */
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin-top: 0.1rem;
 }

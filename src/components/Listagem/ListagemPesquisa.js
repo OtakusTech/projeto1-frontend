@@ -9,7 +9,7 @@ function ListagemPesquisa(props) {
     return(
         <div className={props.className} >
             {
-                listaItens.slice(0,10).map((anime) => 
+                listaItens.slice(0,5).map((anime) => 
                 <Item key={anime._id} className="item-pesquisa" 
                     img={anime.img} 
                     titulo={anime.title} 
