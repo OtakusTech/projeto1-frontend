@@ -9,7 +9,7 @@ const LoginService = props => new Promise((resolve, reject) => {
             resolve(resp);
         }
     }).catch(function(err){
-        toast.error(err);
+        toast.error(err.response.data);
     });
 });
 
