@@ -1,9 +1,14 @@
 
-
 .item-pesquisa {
     display: flex;
     gap: 5px;
-    margin: 2px;
+    border: 1px solid whitesmoke;
+    background-color: white;
+    padding: 0.2rem;
+}
+
+.item-pesquisa p {
+    margin-bottom: 0;
 }
 
 .item-pesquisa:link {
@@ -13,4 +18,5 @@
 .item-pesquisa img {
     height: 50px;
     width: 50px;
+    float: left;
 }

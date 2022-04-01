@@ -27,6 +27,7 @@ const NewAnime = () => {
         tags: [],
         year: '',
         creator: '',
+        user: '',
     });
 
     const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -38,7 +39,7 @@ const NewAnime = () => {
             const fetchAnime = async () => {
                 try {
                     const response = await api.get(`anime/${id}`);
-                    const { title, synopsis, year, img, creator, tags } = response.data;
+                    const { title, synopsis, year, img, creator, tags, user } = response.data;
 
                     setAnime({
                         title,
@@ -46,7 +47,8 @@ const NewAnime = () => {
                         year,
                         image: img ? img : AnimeEmpty,
                         creator: creator,
-                        tags
+                        tags,
+                        user: user
                     });
                     setloading(false);
                 } catch (error) {
@@ -63,7 +65,8 @@ const NewAnime = () => {
         try {
             const resultAnime = await api.post(`/anime/new`, {
                 title: anime.title,
-                creator: localStorage.getItem('user-id'),
+                user: localStorage.getItem('user-id'),
+                creator: anime.creator,
                 year: anime.year,
                 synopsis: anime.synopsis,
                 img: anime.image,
@@ -133,7 +136,7 @@ const NewAnime = () => {
         Object.keys(tags).forEach((tagId) => {
             let flag = true;
             anime.tags.forEach(tag => {
-                if (tagId === tag.id) {
+                if (tagId === tag.tagId) {
                     flag = false
                 }
             })
@@ -191,6 +194,13 @@ const NewAnime = () => {
                                             value={anime.title}
                                             type="title"
                                             onChange={(value) => updateValue("title", value)}
+                                        />
+                                        <InputText 
+                                            name="NOME DO CRIADOR DO ANIME"
+                                            id="creator"
+                                            value={anime.creator}
+                                            type="creator"
+                                            onChange={(value) => updateValue("creator", value)}
                                         />
                                     </Col>
                                     <Col className="order-lg-2" lg="4">
