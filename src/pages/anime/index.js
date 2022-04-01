@@ -109,6 +109,7 @@ const NewAnime = () => {
 
         try {
             apiImage.post('/image', data).then(result => {
+                console.log(result);
                 setAnime({ ...anime, image: result.data.link });
             });
         } catch (error) {
