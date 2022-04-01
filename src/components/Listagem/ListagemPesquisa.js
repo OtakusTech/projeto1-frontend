@@ -5,9 +5,14 @@ import "./ListagemPesquisa.css";
 
 function ListagemPesquisa(props) {
     const listaItens = props.listaItens;
+
+    const classNameCheck = () => {
+        const c = props.className;
+        return listaItens.length > 0 ? c + ' flex' : c + ' none'
+    }
     
     return(
-        <div className={props.className} >
+        <div className={classNameCheck()} >
             {
                 listaItens.slice(0,5).map((anime) => 
                 <Item key={anime._id} className="item-pesquisa" 

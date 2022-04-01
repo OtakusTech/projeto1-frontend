@@ -1,5 +1,8 @@
 .pesquisa {
     margin-left: auto;
     position: relative;
+}
 
+.input-pesquisa {
+    width: 20rem !important;
 }
