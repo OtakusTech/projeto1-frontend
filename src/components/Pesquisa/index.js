@@ -2,6 +2,7 @@ import React, {useEffect, useState} from "react";
 import './Pesquisa.css';
 import ListagemPesquisa from "../Listagem/ListagemPesquisa";
 import axios from "axios";
+import { Input } from "reactstrap";
 
 function Pesquisa(props) {
     const [query, setQuery] = useState("");
@@ -30,9 +31,12 @@ function Pesquisa(props) {
 
     return(
         <div className={props.className}>
-            <input type='search' 
-            onChange={(e) => handleChange(e.target.value)}>
-            </input>
+            <Input
+                className="form-control-alternative input-pesquisa"
+                type='search'
+                placeholder='Buscar Anime' 
+                onChange={(e) => handleChange(e.target.value)}
+            />
             <ListagemPesquisa listaItens={pesquisa()} className='listagem-pesquisa'/>
         </div>
     );
