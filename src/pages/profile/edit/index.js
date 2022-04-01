@@ -41,7 +41,7 @@ const ProfileEditing = () => {
 
         try {
             apiImage.post('/image', data).then(result => {
-                setUser({ ...user, profilePhoto: result.data.link });
+                setUser({ ...user, profilePhoto: result.data.data.link });
             });
         } catch (error) {
             toast.error("Algum erro ocorreu ao tentar salvar a imagem. Tente novamente.")
