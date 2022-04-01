@@ -109,8 +109,7 @@ const NewAnime = () => {
 
         try {
             apiImage.post('/image', data).then(result => {
-                console.log(result);
-                setAnime({ ...anime, image: result.data.link });
+                setAnime({ ...anime, image: result.data.data.link });
             });
         } catch (error) {
             toast.error("Algum erro ocorreu ao tentar salvar a imagem. Tente novamente.")
