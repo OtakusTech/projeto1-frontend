@@ -108,8 +108,9 @@ const NewAnime = () => {
         data.append('image', file);
 
         try {
-            const result = await apiImage.post('/image', data);
-            setAnime({ ...anime, image: result.data.link });
+            apiImage.post('/image', data).then(result => {
+                setAnime({ ...anime, image: result.data.data.link });
+            });
         } catch (error) {
             toast.error("Algum erro ocorreu ao tentar salvar a imagem. Tente novamente.")
         }

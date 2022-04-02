@@ -40,8 +40,9 @@ const ProfileEditing = () => {
         data.append('image', file);
 
         try {
-            const result = await apiImage.post('/image', data);
-            setUser({ ...user, profilePhoto: result.data.link });
+            apiImage.post('/image', data).then(result => {
+                setUser({ ...user, profilePhoto: result.data.data.link });
+            });
         } catch (error) {
             toast.error("Algum erro ocorreu ao tentar salvar a imagem. Tente novamente.")
         }
@@ -109,7 +110,6 @@ const ProfileEditing = () => {
                                         buttonName="SELECIONAR FOTO"
                                         value={user.profilePhoto}
                                         onClick={(file) => handleUpdatePhoto(file)}
-                                        disabled={true}
                                     />
                                 </Col>
                                 <Col className="order-lg-2" lg="6">
