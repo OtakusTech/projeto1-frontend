@@ -6,7 +6,7 @@ const CardAnime = ({ id, img, title, tags}) => {
     let history = useNavigate();
 
     return (
-        <Col lg="3">
+        <Col lg="3" className="mt-3 mb-3">
             <Card className="card-lift--hover shadow border-0">
                 <CardBody className="py-3">
                     <div className="d-flex justify-content-center">

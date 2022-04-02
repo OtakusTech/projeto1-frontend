@@ -64,6 +64,9 @@ const MainNavbar = () => {
 									<a href={`profile/${userId}`} className="text-white">Meu Perfil</a>
 								</NavItem>
 						}
+						<NavItem>
+							<a href="/tags" className="text-white">Tags</a>
+						</NavItem>
 					</Nav>
 					<Nav className="align-items-lg-center ml-lg-auto" navbar>
 						<NavItem>

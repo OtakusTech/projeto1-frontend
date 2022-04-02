@@ -17,11 +17,15 @@ import NewAnime from "./pages/anime";
 import Anime from "./pages/profile-anime";
 import { isAuthenticated } from './services/auth';
 import { ToastContainer } from "react-toastify";
+import Tags from "./pages/tags";
+import AnimesByTag from "./pages/tags/list";
 
 
 const Routes = () => {
   let routes = useRoutes([
     { path: "/", element: <Home />},
+    { path: "/tags", element: <Tags />},
+    { path: "/tags/:id", element: <AnimesByTag /> },
     { path: "/register", element: <Register /> },
     { path: "/login", element: <Login /> },
     { path: "/profile/:id", element: (
