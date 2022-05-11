@@ -74,7 +74,7 @@ const Routes = () => {
 const RoutesMain = () => {
   return (
     <Router>
-      {isAuthenticated() ? <MainNavbar /> : <></>}
+      <MainNavbar />
       <Routes />
     </Router>
   );

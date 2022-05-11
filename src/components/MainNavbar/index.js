@@ -25,9 +25,9 @@ const MainNavbar = () => {
 	useEffect(() => {
 		const id = localStorage.getItem('user-id');
 		setUserId(id);
-		let headroom = new Headroom(document.getElementById("navbar-main"));
-		headroom.init();
-	}, [])
+		// let headroom = new Headroom(document.getElementById("navbar-main"));
+		// headroom.init();
+	})
 
 	const logoutUser = () => {
 		setUserId(null);
@@ -38,7 +38,8 @@ const MainNavbar = () => {
 		<>
 			<header className="header-global">
 			<Navbar
-				className="navbar-main navbar-transparent headroom"
+				className="navbar-horizontal navbar-dark bg-default position-fixed w-100"
+				style={{ zIndex: '30'}}
 				expand="lg"
 				id="navbar-main"
 			>

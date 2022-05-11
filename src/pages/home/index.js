@@ -21,7 +21,7 @@ const Home = () => {
   return (
       <>
         <ContainerBG>
-          <div className="col px-0 mt--300">
+          <div className="col px-0" style={{ marginTop: '-340px' }}>
             <Row>
               <Col lg='3'>
                 <img src={Logo} width='200px' height='233px'/>
