@@ -60,7 +60,7 @@ const Anime = () => {
                                 <div className="card-profile-image">
                                     <img
                                         alt="..."
-                                        className="ml-6"
+                                        className="ml-6 mt-6"
                                         style={{ "height": "400px", "width": "300px", "maxWidth": "300px" }}
                                         src={anime.image}
                                     />
@@ -71,7 +71,7 @@ const Anime = () => {
                     <div className="card-profile-actions p-4 mt-lg-0">
                         <Button
                             className="float-right"
-                            color="danger"
+                            style={{ backgroundColor: '#34004a', color: 'white' }}
                             size="sm"
                             onClick={() => history(`${window.location.pathname}/edit`)}
                         >

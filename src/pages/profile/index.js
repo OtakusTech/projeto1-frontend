@@ -48,7 +48,7 @@ const Profile = () => {
                     <div className="card-profile-actions py-4 mt-lg-0">
                         <Button
                             className="float-right"
-                            color="danger"
+                            style={{ backgroundColor: '#34004a', color: 'white' }}
                             size="sm"
                             onClick={() => history(`${window.location.pathname}/edit`)}
                         >

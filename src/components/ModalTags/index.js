@@ -61,7 +61,7 @@ const Modaltags = ({ isOpen, submit, close }) => {
                         type="texto"
                         onChange={(value) => setTag(value)}
                     />
-                    <Button color="danger" onClick={() => handleTags()}>
+                    <Button style={{ backgroundColor: '#34004a', color: 'white'}} onClick={() => handleTags()}>
                         +
                     </Button>
                 </Row>
@@ -78,7 +78,7 @@ const Modaltags = ({ isOpen, submit, close }) => {
                 </Row>
             </div>
             <div className="modal-footer">
-                <Button color="danger" type="button" onClick={() => submit(tags)}>
+                <Button style={{ backgroundColor: '#34004a', color: 'white'}} type="button" onClick={() => submit(tags)}>
                     SALVAR TAGS
                 </Button>
             </div>

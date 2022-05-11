@@ -29,7 +29,6 @@ const InputPhoto = ({ title, className, titleImage, buttonName, value, onClick, 
                         onChange={(event) => onClick(event)}
                     />
                     <StyledButton
-                        color="danger"
                         size="sm"
                         type="button"
                         htmlFor="profilePhoto"

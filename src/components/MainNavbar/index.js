@@ -14,6 +14,8 @@ import {
 } from "reactstrap";
 import Pesquisa from '../Pesquisa';
 
+import Logo from '../../assets/logo/LOGO-PRINCIPAL-BRANCA.png'
+
 const MainNavbar = () => {
 
 	let history = useNavigate();
@@ -36,7 +38,7 @@ const MainNavbar = () => {
 		<>
 			<header className="header-global">
 			<Navbar
-				className="navbar-main navbar-transparent navbar-light headroom"
+				className="navbar-main navbar-transparent headroom"
 				expand="lg"
 				id="navbar-main"
 			>
@@ -52,7 +54,7 @@ const MainNavbar = () => {
 					onExited={() => setcollapseClasses("")}
 				>
 					<NavbarBrand className="mr-lg-5" to="/" tag={Link}>
-						<h5 className="text-white m-0">Otakus Tech</h5>
+						<img src={Logo}/>
 					</NavbarBrand>
 					<Nav className="navbar-nav-hover align-items-lg-center" navbar>
 						<NavItem>
@@ -75,7 +77,7 @@ const MainNavbar = () => {
 						<NavItem className="d-none d-lg-block ml-lg-4">
 							<Button
 								className="btn-neutral btn-icon"
-								color="danger"
+								style={{ blackgroungColor: '#34004a' }}
 								href={userId ? null : "/login"}
 								target="_self"
 							>

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
-import { Button, Card, Col, Container, Form, Label, Row } from "reactstrap";
+import { Card, Col, Form, Label, Row } from "reactstrap";
 import api from "../../../services/api/api";
 import { toast } from 'react-toastify';
 import ContainerBG from "../../../components/ContainerBG";
@@ -9,6 +9,7 @@ import InputText from "../../../components/InputText";
 import InputPhoto from "../../../components/InputPhoto";
 import ProfileEmpty from "../../../assets/img/profile-empty.jpg";
 import apiImage from "../../../services/api/apiImage";
+import Button from "../../../components/Button";
 
 const ProfileEditing = () => {
     const params = useParams();
@@ -127,13 +128,11 @@ const ProfileEditing = () => {
                                 <Col className="order-lg-2" lg="12">
                                     <Button
                                         block
-                                        outline
-                                        color="danger"
+                                        color='#34004a'
                                         type="submit"
                                         className="mt-5 mb-3"
-                                    >
-                                        SALVAR
-                                    </Button>
+                                        label='SALVAR'
+                                    />
                                 </Col>
                             </Row>
                         </Form>

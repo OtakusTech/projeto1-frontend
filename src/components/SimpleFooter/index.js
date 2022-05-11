@@ -23,7 +23,7 @@ class SimpleFooter extends React.Component {
                   Obrigado pelo apoio!
                 </h3>
               </Col>
-              <Col className="text-lg-center btn-wrapper" lg="6">
+              {/* <Col className="text-lg-center btn-wrapper" lg="6">
                 <Button
                   className="btn-icon-only rounded-circle"
                   color="twitter"
@@ -66,17 +66,17 @@ class SimpleFooter extends React.Component {
                 <UncontrolledTooltip delay={0} target="tooltip495507257">
                   Star on Github
                 </UncontrolledTooltip>
-              </Col>
+              </Col> */}
             </Row>
             <hr />
             <Row className=" align-items-center justify-content-md-between">
               <Col md="6">
                 <div className=" copyright">
                   © {new Date().getFullYear()}{" "}
-                  OTAKUS TECH.
+                  OTAKUS TECH
                 </div>
               </Col>
-              <Col md="6">
+              {/* <Col md="6">
                 <Nav className=" nav-footer justify-content-end">
                   <NavItem>
                     <NavLink
@@ -111,7 +111,7 @@ class SimpleFooter extends React.Component {
                     </NavLink>
                   </NavItem>
                 </Nav>
-              </Col>
+              </Col> */}
             </Row>
           </Container>
         </footer>

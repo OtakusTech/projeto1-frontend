@@ -1,18 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import './style.css';
-import axios from 'axios';
+import Logo from '../../assets/logo/LOGO-V2-BRANCA.png'
 
 import {
-    Badge,
-    Button,
-    Card,
-    CardBody,
-    Container,
     Row,
     Col
   } from "reactstrap";
 
-import MainNavbar from "../../../src/components/MainNavbar";
 import SimpleFooter from "../../../src/components/SimpleFooter";
 import ContainerBG from '../../components/ContainerBG/index.js';
 import ListAnimes from '../../components/ListAnimes';
@@ -26,11 +20,13 @@ const Home = () => {
 
   return (
       <>
-        <MainNavbar />
         <ContainerBG>
           <div className="col px-0 mt--300">
             <Row>
-              <Col>
+              <Col lg='3'>
+                <img src={Logo} width='200px' height='233px'/>
+              </Col>
+              <Col lg='9'>
                 <h1 className="display-3 text-white">
                   Descubra novos Animes
                 </h1>

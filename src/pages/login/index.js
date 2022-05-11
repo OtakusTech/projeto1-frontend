@@ -2,30 +2,14 @@ import React, { useState, useEffect } from 'react';
 import './style.css';
 import LoginService from '../../services/loginService.js';
 import { useNavigate } from "react-router-dom";
+import Logo from '../../assets/logo/LOGO-PRINCIPAL.png'
+import Button from '../../components/Button';
 
 const Login = () => {
 
     let history = useNavigate();
 
     const [loading, setLoading] = useState(false);
-
-    useEffect(() => {
-        const myButton = document.getElementById('default-btn');
-
-        if (loading){
-            myButton.style.width = '7rem';
-            myButton.value = 'Logging in';
-            myButton.disabled = true;
-            myButton.style.background = 'rgb(167, 0, 0)';
-            myButton.style.cursor = 'unset';
-        }else{
-            myButton.style.width = '19rem';
-            myButton.value = 'Login';
-            myButton.disabled = false;
-            myButton.style.background = 'red';
-            myButton.style.cursor = 'pointer';
-        }
-    }, [loading]);
 
     useEffect(()=> {
         var form = document.getElementById("login-form");
@@ -58,22 +42,24 @@ const Login = () => {
 
     return (
         <>
-        <div id="branding">
-            {/* <img src={Logo} alt="Eightnote logo" className="logo-img"/> */}
-            <h1>Otakus Tech</h1>
-            <p>Descubra seus animes favoritos</p>
-        </div>
-        <div id="form-container">
-        <form onSubmit={userLogin} id='login-form'>
-            <input type="email" placeholder="E-mail" id="email"/>
-            <input type="password" placeholder="Password" id="password"/>
-            <input type="submit" id="default-btn" value="Login"></input>
-            
-        </form>
-        <p>Ainda não possui uma conta?</p>
-        <span id="register" onClick={() => {
-            history('/register')}}>Registrar</span>
-        </div>
+            <div id="branding">
+                <img src={Logo} className="logo-img"/>
+                <p id='sub-title'>Descubra seus animes favoritos</p>
+            </div>
+            <div id="form-container">
+            <form onSubmit={userLogin} id='login-form'>
+                <input type="email" placeholder="E-mail" id="email"/>
+                <input type="password" placeholder="Password" id="password"/>
+                <Button 
+                    color="#34004a"
+                    label="LOGIN"
+                />
+                
+            </form>
+            <p>Ainda não possui uma conta?</p>
+            <span id="register" onClick={() => {
+                history('/register')}}>Registrar</span>
+            </div>
         </>
     );
 };

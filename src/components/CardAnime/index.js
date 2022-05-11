@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router";
-import { Badge, Button, Card, CardBody, Col } from "reactstrap";
+import { Badge, Card, CardBody, Col } from "reactstrap";
+import Button from "../Button";
 
 const CardAnime = ({ id, img, title, tags}) => {
 
@@ -28,12 +29,11 @@ const CardAnime = ({ id, img, title, tags}) => {
                     </div>
                     <Button
                         block
-                        className="mt-4"
-                        color="danger"
+                        className="mt-4 primary"
+                        color="#34004a"
                         onClick={() => history(`/anime/${id}`)}
-                    >
-                        VER MAIS
-                    </Button>
+                        label="VER MAIS"
+                    />
                 </CardBody>
             </Card>
         </Col>
