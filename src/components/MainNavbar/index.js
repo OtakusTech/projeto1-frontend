@@ -14,6 +14,8 @@ import {
 } from "reactstrap";
 import Pesquisa from '../Pesquisa';
 
+import Logo from '../../assets/logo/LOGO-PRINCIPAL-BRANCA.png'
+
 const MainNavbar = () => {
 
 	let history = useNavigate();
@@ -23,9 +25,9 @@ const MainNavbar = () => {
 	useEffect(() => {
 		const id = localStorage.getItem('user-id');
 		setUserId(id);
-		let headroom = new Headroom(document.getElementById("navbar-main"));
-		headroom.init();
-	}, [])
+		// let headroom = new Headroom(document.getElementById("navbar-main"));
+		// headroom.init();
+	})
 
 	const logoutUser = () => {
 		setUserId(null);
@@ -36,7 +38,8 @@ const MainNavbar = () => {
 		<>
 			<header className="header-global">
 			<Navbar
-				className="navbar-main navbar-transparent navbar-light headroom"
+				className="navbar-horizontal navbar-dark bg-default position-fixed w-100"
+				style={{ zIndex: '30'}}
 				expand="lg"
 				id="navbar-main"
 			>
@@ -52,7 +55,7 @@ const MainNavbar = () => {
 					onExited={() => setcollapseClasses("")}
 				>
 					<NavbarBrand className="mr-lg-5" to="/" tag={Link}>
-						<h5 className="text-white m-0">Otakus Tech</h5>
+						<img src={Logo}/>
 					</NavbarBrand>
 					<Nav className="navbar-nav-hover align-items-lg-center" navbar>
 						<NavItem>
@@ -75,7 +78,7 @@ const MainNavbar = () => {
 						<NavItem className="d-none d-lg-block ml-lg-4">
 							<Button
 								className="btn-neutral btn-icon"
-								color="danger"
+								style={{ blackgroungColor: '#34004a' }}
 								href={userId ? null : "/login"}
 								target="_self"
 							>

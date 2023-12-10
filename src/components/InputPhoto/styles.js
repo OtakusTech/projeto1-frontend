@@ -18,4 +18,6 @@ export const StyledInput = styled(Input)`
 
 export const StyledButton = styled(Button)`
     z-index: 1;
+    background-color: #34004a;
+    color: white;
 `;

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
-import { Badge, Button, Card, Col, Form, Label, Row } from "reactstrap";
+import { Badge, Card, Col, Form, Label, Row } from "reactstrap";
 import ContainerBG from "../../components/ContainerBG";
 import InputPhoto from "../../components/InputPhoto";
 import InputText from "../../components/InputText";
@@ -11,6 +11,7 @@ import { toast } from "react-toastify";
 import apiImage from "../../services/api/apiImage";
 import Modaltags from "../../components/ModalTags";
 import { AiFillLike } from "react-icons/ai";
+import Button from "../../components/Button";
 
 const NewAnime = () => {
     const params = useParams();
@@ -254,10 +255,10 @@ const NewAnime = () => {
                                                 anime.tags.map(tag => {
                                                     return (
                                                         <>
-                                                            <Badge key={`${tag.id}${(new Date()).getTime()}1`} color="primary" pill className="mr-1 pr-3 pl-3 text-white">
+                                                            <Badge key={`${tag.id}${(new Date()).getTime()}1`} color="primary" pill className="mr-1 mb-3 pr-3 pl-3 text-white">
                                                                 {tag.folks.length}
                                                             </Badge>
-                                                            <Badge key={`${tag.id}${(new Date()).getTime()}2`} color="light" pill className="mr-3 pr-3 pl-3">
+                                                            <Badge key={`${tag.id}${(new Date()).getTime()}2`} color="light" pill className="mr-3 mb-3 pr-3 pl-3">
                                                                 {tag.name}
                                                                 <AiFillLike className="ml-2" onClick={() => upVoteTag(tag.id)}/>
                                                             </Badge>
@@ -267,9 +268,9 @@ const NewAnime = () => {
                                             }
                                             <Badge 
                                                 key="more"
-                                                color="danger"
                                                 pill
-                                                className="mr-1 pr-3 pl-3 text-white"
+                                                color="danger"
+                                                className="mr-1 mb-3 pr-3 pl-3 text-white"
                                                 onClick={() => handleModal()}
                                             >
                                                 ADD
@@ -280,14 +281,11 @@ const NewAnime = () => {
                                 <Row className="justify-content-center m-2">
                                     <Col className="order-lg-2" lg="12">
                                         <Button
-                                            block
-                                            outline
-                                            color="danger"
+                                            color='#34004a'
                                             type="submit"
                                             className="mt-5 mb-3"
-                                        >
-                                            SALVAR
-                                        </Button>
+                                            label="SALVAR"
+                                        />
                                     </Col>
                                 </Row>
                             </Form>

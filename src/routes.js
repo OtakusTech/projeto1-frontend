@@ -6,19 +6,17 @@ import {
 
 import {Navigate} from 'react-router';
 
-import Register from './pages/register';
 import Login from './pages/login';
 import Home from './pages/home';
-import NotFound from './components/NotFound';
-import PrivateRoute from './components/PrivateRoute';
 import Profile from './pages/profile';
 import ProfileEditing from "./pages/profile/edit";
 import NewAnime from "./pages/anime";
 import Anime from "./pages/profile-anime";
 import { isAuthenticated } from './services/auth';
-import { ToastContainer } from "react-toastify";
 import Tags from "./pages/tags";
 import AnimesByTag from "./pages/tags/list";
+import MainNavbar from "./components/MainNavbar";
+import Register from "./pages/register";
 
 
 const Routes = () => {
@@ -26,8 +24,20 @@ const Routes = () => {
     { path: "/", element: <Home />},
     { path: "/tags", element: <Tags />},
     { path: "/tags/:id", element: <AnimesByTag /> },
-    { path: "/register", element: <Register /> },
-    { path: "/login", element: <Login /> },
+    { path: "/register", element: (
+    !isAuthenticated() ? (
+      <Register />
+    ) : (
+      <Navigate to={{ pathname: '/'}} />
+    )
+    )},
+    { path: "/login", element: (
+      !isAuthenticated() ? (
+        <Login />
+      ) : (
+        <Navigate to={{ pathname: '/'}} />
+      )
+    )},
     { path: "/profile/:id", element: (
       isAuthenticated() ? (
         <Profile />
@@ -64,6 +74,7 @@ const Routes = () => {
 const RoutesMain = () => {
   return (
     <Router>
+      <MainNavbar />
       <Routes />
     </Router>
   );

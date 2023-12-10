@@ -4,7 +4,7 @@ import { Container } from "reactstrap";
 const ContainerBG = (props) => {
     return (
         <main className="profile-page">
-            <section className="section-profile-cover section-shaped my-0" style={{"background": "linear-gradient(45deg, red, orange)", "height": "380px"}}>
+            <section className="section-profile-cover section-shaped my-0" style={{"background": `linear-gradient(45deg, #34004a, #5e5ea4)`, "height": "380px"}}>
                 <div className="separator separator-bottom separator-skew">
                     <svg
                         xmlns="http://www.w3.org/2000/svg"

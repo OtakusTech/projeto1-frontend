@@ -1,6 +1,5 @@
 .logo-img{
-    width: 70px;
-    height: 70px;
+    width: 300px;
 }
 
 *{
@@ -10,19 +9,21 @@
 
 #branding{
     text-align: center;
-    margin-top: 3rem;
+    padding-top: 6rem;
 }
 
 #branding h1,p{
     margin-bottom: 1rem;
 }
 
-
+#sub-title {
+    margin-top: 20px;
+}
 
 form input {
     display: block;
     height: 3rem;
-    width: 16rem;
+    width: 100%;
     border: none;
     margin: 0px auto 1rem auto;
     font-size: 14px;
@@ -30,29 +31,13 @@ form input {
 
 form{
     text-align: center;
+    padding: 10px;
 }
 
 #form-container{
     width: 21rem;
     margin: 0px auto;
     text-align: center;
-}
-
-#default-btn{
-    border: none;
-    height: 2.5rem;
-    width: 19rem;
-    border-radius: 5px;
-    background: red;
-    color: white;
-    font-weight: 200;
-    font-size: 16px;
-    transition: 500ms;
-}
-
-#default-btn:hover{
-    cursor: pointer;
-    background: rgb(167, 0, 0);
 }
 
 #form-container p{
@@ -64,7 +49,7 @@ form{
 
 #form-container a{
     text-decoration: none;
-    color: red;
+    color: #34004a;
     font-size: 16px;
 }
 
@@ -74,7 +59,7 @@ form{
 
 #register{
     display: block;
-    color: rgb(167, 0, 0);
+    color: #34004a;
 }
 
 #register:hover{
